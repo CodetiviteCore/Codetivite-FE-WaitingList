@@ -75,7 +75,7 @@
     height: 10vh;
     padding: 0 10%;
     p{
-      font-size: 12px;
+      font-size: 16px;
     }
 
     .footer_socials {
@@ -99,15 +99,15 @@
 @media only screen and (max-width:768px) {
   .container{
     .blue{
-      top:-20rem;
-      right: -10rem;
+      top:0rem;
+      right: 0;
       width: 100%;
     }
     .yellow{
       width: 100%;
     }
   }
- 
+
 
   main {
     flex-direction: column-reverse;
@@ -146,13 +146,12 @@
   }
 
   .footer{
-    position: fixed;
     left: 0;
     bottom: 30px;
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-      margin-left: 3rem;
+    margin-top: 50px;
 
     p{
       align-self: center;

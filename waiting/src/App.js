@@ -22,7 +22,9 @@ function App() {
   const [enabled, setEnabled] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
+
   const date = new Date()
+  const year = date.getFullYear
   const handleShowModal = () => {
     console.log("MOdal!!")
     setShowModal(true)
@@ -92,11 +94,11 @@ function App() {
           </div>
         </main>
         <footer className='footer'>
-          <p> © {date.getFullYear} Codevite All rights reserved.</p>
+          <p> © {year} Codevite All rights reserved.</p>
           <div className='footer_socials'>
-            <><img src={Instagram} alt={"instagram"} /></>
-            <div><img src={Twitter} alt={"Twitter"} /></div>
-            <div><img src={LinkedIn} alt={"linkedIn"} /></div>
+            <a href=''  rel="noreferrer"><div><img src={Instagram} alt={"instagram"} /></div></a>
+            <a href='https://twitter.com/codetivite' target={"_blank"}  rel="noreferrer"><div><img src={Twitter} alt={"Twitter"} /></div></a>
+            <a href='https://www.linkedin.com/company/codetivite/' target={"_blank"}  rel="noreferrer"><div><img src={LinkedIn} alt={"linkedIn"} /></div></a>
           </div>
         </footer>
 
