@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap');
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* overflow-x: hidden; */
+  
+}
+*{
+  margin:0;
+  padding: 0;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+:root{
+  --white:#ffffff;
+  --green:#2AB255;
+  --greenlight:#E2F8E9;
+  --gray:#ADAEAB;
+  --fadedGreen:#EAFAEF;
+  --inputActive:#E2F8E9;
+  --modal: #FAFFFF;
+  --modalLinkColor:#F5FCFA;
+}
+p,h1,h2,h3,h4,h5,h6,ul,li,button,input{
+  font-family: 'Red Hat Display', sans-serif;
+}
