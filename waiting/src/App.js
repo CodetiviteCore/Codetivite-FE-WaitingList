@@ -21,34 +21,53 @@ function App() {
   })
   const [enabled, setEnabled] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const [error, setError] = useState({
+    Errorfullname: "",
+    ErrorEmail:""
+  })
 
+  const { fullName, email } = input
+  const {Errorfullname,ErrorEmail} = error
+ 
+  const validateInput = (email) => {
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailValid.test(email);
+  }
 
-  const date = new Date()
-  const year = date.getFullYear
   const handleShowModal = () => {
     console.log("MOdal!!")
     setShowModal(true)
   }
 
-  const { fullName, email } = input
+
   const handleInput = (e) => {
     const { name, value } = e.target
-    setInput({ ...input, [name]: value })
+    setInput({ ...input, [name]: value }) 
+  
     if (fullName && email) {
       setEnabled(true)
     } else if (fullName === "" || email === "") {
       setEnabled(false)
     }
   }
+
+
+
   const submit = (e) => {
     e.preventDefault()
+    setError({...error,ErrorEmail: " " })
+    if ((email && validateInput(email))) {
+      //run upload
+    }
+    else {
+      setError({ ...error, ErrorEmail: "Invalid email format" })
+    }
   }
 
   return (
     <div className='main_container'>
-      <Navbar />
+      <Navbar/>
       <Modal showModal={showModal} setShowModal={setShowModal} />
-
       <div className='container'>
         <img src={Yellow} alt={"Yellow Light"} className={"yellow"} />
         <img src={Blue} alt={"Blue light"} className={"blue"} />
@@ -70,19 +89,24 @@ function App() {
                     onChange={handleInput}
                     name={"fullName"}
                     value={fullName}
+                    type="text"
                   />
+                 
                   <Input
                     placeholder={"Email address"}
                     icon={emailIcon}
                     name={"email"}
                     value={email}
                     onChange={handleInput}
+                    // type="email"
                   />
+                   <p style={{color:"red"}}>{ErrorEmail }</p>
                   <Button
                     buttonEnabled={enabled}
-                    type={"large"}
+                    buttonType={"large"}
+                    type="submit"
                     disabled={!(fullName && email)}
-                    onClick={handleShowModal}
+                    // onClick={handleShowModal}
                   >Notify me on launch</Button>
                 </div>
               </form>
@@ -96,9 +120,17 @@ function App() {
         <footer className='footer'>
           <p> © 2023 Codevite All rights reserved.</p>
           <div className='footer_socials'>
-            <a href=''  rel="noreferrer"><div><img src={Instagram} alt={"instagram"} /></div></a>
-            <a href='https://twitter.com/codetivite' target={"_blank"}  rel="noreferrer"><div><img src={Twitter} alt={"Twitter"} /></div></a>
-            <a href='https://www.linkedin.com/company/codetivite/' target={"_blank"}  rel="noreferrer"><div><img src={LinkedIn} alt={"linkedIn"} /></div></a>
+            <a href=''  rel="noreferrer"><div><img src={Instagram} alt={"instagram"}/></div></a>
+            <a href='https://twitter.com/codetivite' target={"_blank"} rel="noreferrer">
+              <div>
+                <img src={Twitter} alt={"Twitter"} />
+              </div>
+            </a>
+            <a href='https://www.linkedin.com/company/codetivite/' target={"_blank"} rel="noreferrer">
+              <div>
+                <img src={LinkedIn} alt={"linkedIn"} />
+              </div>
+            </a>
           </div>
         </footer>
 

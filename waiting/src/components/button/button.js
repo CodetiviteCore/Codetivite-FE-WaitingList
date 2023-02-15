@@ -1,11 +1,11 @@
 import "./button.scss"
 
-export const Button = ({ children, type, buttonEnabled, ...otherProps }) => {
+export const Button = ({ children, buttonType, buttonEnabled, ...otherProps }) => {
   return (
 
     <>
       {
-        type === "large" ?
+        buttonType === "large" ?
           (
             <button
               {...otherProps}
