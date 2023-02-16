@@ -18,10 +18,21 @@ button{
     height: 4rem;
     background-color: var(--fadedGreen);
     color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+        cursor:default;
+    }
+
 }
 .enabled{
     background-color: var(--green);
     color: var(--white);
+      &:hover{
+        cursor:pointer;
+    }
+
 }
 
 @media screen and (max-width:700px) {

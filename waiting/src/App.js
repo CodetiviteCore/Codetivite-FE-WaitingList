@@ -12,6 +12,9 @@ import Blue from "./assets/blueLight.svg"
 import { Button } from './components/button/button';
 import { useState } from 'react';
 import { Modal } from './components/modal/modal';
+import axios from 'axios'
+import { toast, ToastContainer } from 'react-toastify';
+import { Puff } from  'react-loader-spinner'
 
 
 function App() {
@@ -21,29 +24,29 @@ function App() {
   })
   const [enabled, setEnabled] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState({
     Errorfullname: "",
-    ErrorEmail:""
+    ErrorEmail: ""
   })
 
   const { fullName, email } = input
-  const {Errorfullname,ErrorEmail} = error
- 
+  const { Errorfullname, ErrorEmail } = error
+
   const validateInput = (email) => {
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailValid.test(email);
   }
 
   const handleShowModal = () => {
-    console.log("MOdal!!")
     setShowModal(true)
   }
 
 
   const handleInput = (e) => {
     const { name, value } = e.target
-    setInput({ ...input, [name]: value }) 
-  
+    setInput({ ...input, [name]: value })
+
     if (fullName && email) {
       setEnabled(true)
     } else if (fullName === "" || email === "") {
@@ -55,9 +58,44 @@ function App() {
 
   const submit = (e) => {
     e.preventDefault()
-    setError({...error,ErrorEmail: " " })
+    setError({ ...error, ErrorEmail: " " })
+    setLoading(true)
+
     if ((email && validateInput(email))) {
-      //run upload
+      axios.post("https://codetivite-api.onrender.com/v1.0/api/mailList", {
+        email: email,
+        firstName: fullName
+      })
+        .then((response) => {
+          toast.success('Added to our mailing list', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: false,
+            theme: "light",
+          });
+          setLoading(false)
+        })
+        .catch((e) => toast.success(`Something went wrong ${e}`, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }))
+        .finally(() => {
+          setInput({
+            fullName: "",
+            email:""
+          })
+          handleShowModal()
+        })
     }
     else {
       setError({ ...error, ErrorEmail: "Invalid email format" })
@@ -66,7 +104,7 @@ function App() {
 
   return (
     <div className='main_container'>
-      <Navbar/>
+      <Navbar />
       <Modal showModal={showModal} setShowModal={setShowModal} />
       <div className='container'>
         <img src={Yellow} alt={"Yellow Light"} className={"yellow"} />
@@ -91,23 +129,35 @@ function App() {
                     value={fullName}
                     type="text"
                   />
-                 
+
                   <Input
                     placeholder={"Email address"}
                     icon={emailIcon}
                     name={"email"}
                     value={email}
                     onChange={handleInput}
-                    // type="email"
+                  // type="email"
                   />
-                   <p style={{color:"red"}}>{ErrorEmail }</p>
+                  <p style={{ color: "red" }}>{ErrorEmail}</p>
                   <Button
                     buttonEnabled={enabled}
                     buttonType={"large"}
                     type="submit"
                     disabled={!(fullName && email)}
-                    // onClick={handleShowModal}
-                  >Notify me on launch</Button>
+                  // onClick={handleShowModal}
+                  >{loading ?
+
+                    <Puff
+                      height="40"
+                      width="40"
+                      radius={1}
+                      color="var(--greenlight)"
+                      ariaLabel="puff-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                    />
+                    : "Notify me on launch"}</Button>
                 </div>
               </form>
 
@@ -120,7 +170,7 @@ function App() {
         <footer className='footer'>
           <p> © 2023 Codevite All rights reserved.</p>
           <div className='footer_socials'>
-            <a href=''  rel="noreferrer"><div><img src={Instagram} alt={"instagram"}/></div></a>
+            <a href='' rel="noreferrer"><div><img src={Instagram} alt={"instagram"} /></div></a>
             <a href='https://twitter.com/codetivite' target={"_blank"} rel="noreferrer">
               <div>
                 <img src={Twitter} alt={"Twitter"} />
@@ -136,6 +186,7 @@ function App() {
 
 
       </div>
+      <ToastContainer />
 
     </div>
 

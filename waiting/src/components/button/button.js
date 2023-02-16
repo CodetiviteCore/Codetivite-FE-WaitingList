@@ -10,7 +10,6 @@ export const Button = ({ children, buttonType, buttonEnabled, ...otherProps }) =
             <button
               {...otherProps}
               className={`button2 ${buttonEnabled ? "enabled" : null}`}
-
             >
               {children}
             </button>
