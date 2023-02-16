@@ -59,9 +59,10 @@ function App() {
   const submit = (e) => {
     e.preventDefault()
     setError({ ...error, ErrorEmail: " " })
-    setLoading(true)
+
 
     if ((email && validateInput(email))) {
+      setLoading(true)
       axios.post("https://codetivite-api.onrender.com/v1.0/api/mailList", {
         email: email,
         firstName: fullName
@@ -94,6 +95,7 @@ function App() {
             fullName: "",
             email:""
           })
+          setEnabled(false)
           handleShowModal()
         })
     }
