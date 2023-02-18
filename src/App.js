@@ -14,7 +14,7 @@ import { useState } from 'react';
 import { Modal } from './components/modal/modal';
 import axios from 'axios'
 import { toast, ToastContainer } from 'react-toastify';
-import { Puff } from  'react-loader-spinner'
+import { Puff } from 'react-loader-spinner'
 
 
 function App() {
@@ -49,16 +49,17 @@ function App() {
 
     if (fullName && email) {
       setEnabled(true)
-    } else if (fullName === "" || email === "") {
+    }
+    else if (fullName === "" || email === "") {
       setEnabled(false)
     }
   }
 
-
-
+  
   const submit = (e) => {
     e.preventDefault()
     setError({ ...error, ErrorEmail: " " })
+    alert("buterc")
 
 
     if ((email && validateInput(email))) {
@@ -93,7 +94,7 @@ function App() {
         .finally(() => {
           setInput({
             fullName: "",
-            email:""
+            email: ""
           })
           setEnabled(false)
           handleShowModal()
@@ -107,10 +108,13 @@ function App() {
   return (
     <div className='main_container'>
       <Navbar />
-      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <Modal showModal={showModal} setShowModal={setShowModal} link={"codetivite.com"} />
       <div className='container'>
+        <div className='lights'>
         <img src={Yellow} alt={"Yellow Light"} className={"yellow"} />
         <img src={Blue} alt={"Blue light"} className={"blue"} />
+        </div>
+       
 
         <main>
           <div className='deets'>
@@ -127,6 +131,7 @@ function App() {
                     placeholder={"Firstname"}
                     icon={user}
                     onChange={handleInput}
+                    onBlur={handleInput}
                     name={"fullName"}
                     value={fullName}
                     type="text"
@@ -138,6 +143,7 @@ function App() {
                     name={"email"}
                     value={email}
                     onChange={handleInput}
+                    onBlur={handleInput}
                   // type="email"
                   />
                   <p style={{ color: "red" }}>{ErrorEmail}</p>
@@ -145,8 +151,8 @@ function App() {
                     buttonEnabled={enabled}
                     buttonType={"large"}
                     type="submit"
-                    disabled={!(fullName && email)}
-                  // onClick={handleShowModal}
+                    disabled={enabled}
+                  onClick={submit}
                   >{loading ?
 
                     <Puff
@@ -172,7 +178,7 @@ function App() {
         <footer className='footer'>
           <p> © 2023 Codevite All rights reserved.</p>
           <div className='footer_socials'>
-            <a href='' rel="noreferrer"><div><img src={Instagram} alt={"instagram"} /></div></a>
+            <a href='https://www.instagram.com/codetivite/' rel="noreferrer"><div><img src={Instagram} alt={"instagram"} /></div></a>
             <a href='https://twitter.com/codetivite' target={"_blank"} rel="noreferrer">
               <div>
                 <img src={Twitter} alt={"Twitter"} />

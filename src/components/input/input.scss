@@ -1,45 +1,67 @@
-.input{
+.input {
     width: 27.3rem !important;
     height: 4rem;
     border-radius: 10px;
     border: 1px solid var(--greenlight);
     display: flex;
     align-items: center;
-    gap:20px;
-    padding: 0  0 0 22px;
+    gap: 20px;
+    padding: 0 0 0 22px;
 
-    img{
-        width: 18px;
-        height:23px;
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+        background-color: var(--inputActive);
     }
-    &:focus-within{
+    & input[data-autocompleted]{
+        background-color: var(--inputActive) !important;
+    }
+
+    img {
+        width: 18px;
+        height: 23px;
+    }
+
+    &:focus-within {
         background-color: var(--inputActive);
         outline: none;
     }
 
-    input{
+    input {
         width: inherit;
         height: inherit;
         border: none;
-        & ::placeholder{
+        background-color: transparent;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s;
+        }
+        &[data-autocompleted] {
+        background-color: var(--inputActive) !important;
+    }
+
+
+        & ::placeholder {
             color: var(--gray);
             font-size: 1.2rem;
         }
-        &:focus{
+
+        &:focus {
             background-color: var(--inputActive);
             outline: none;
         }
+
     }
-    
+
 }
 
 
 @media only screen and (max-width:768px) {
-    .input{
-        width:90% !important;
-        height: 48px !important ;
-        border-radius: 0px 10px 10px  !important;
+    .input {
+        width: 90% !important;
+        height: 48px !important;
+        border-radius: 0px 10px 10px !important;
     }
-   
-}
 
+}

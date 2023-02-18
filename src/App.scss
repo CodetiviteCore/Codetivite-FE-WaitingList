@@ -5,30 +5,41 @@
   position: relative;
   width: 100%;
   height: 100%;
-  .yellow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -5;
-    height: 100%;
-  }
+  // .yellow {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   z-index: -5;
+  //   height: 100%;
+  // }
 
-  .blue {
-    position: absolute;
-    top: -6rem;
-    right: 0;
-    z-index: -5;
-    height: 70%;
+  // .blue {
+  //   position: absolute;
+  //   top: -6rem;
+  //   right: 0;
+  //   z-index: -5;
+  //   height: 70%;
+  // }
+  .lights{
+    position: fixed;
+    z-index: -10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;  
   }
 
   main {
     height: 80vh;
     padding: 0 10%;
+    width: 100%;
     width: fit-content;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    .landingImage{
+      margin-left: 20%;
+    }
     // flex-wrap: wrap;
     .cooking {
       background-color: var(--green);
@@ -113,10 +124,9 @@
     flex-direction: column-reverse;
     gap: 40px;
     align-items: center !important;
-    margin-top: 50px;
 
     .landingImage {
-      margin-left: -2em;
+      margin-left:0 !important;
       width: 264px;
       height: 232px;
     }
@@ -162,4 +172,47 @@
       padding: 20px 0px;
     }  
   }
+}
+
+
+@media only screen and (max-width:667px) {
+  .container{
+    margin-top: 100px !important;
+  }
+  main{
+    margin-top: 200px;
+    .landingImage{
+      margin-left: 0 !important;
+    }
+  }
+}
+@media only screen and (max-width:900px) {
+  .container{
+    margin-top: -150px;
+  }
+  main{
+    
+    .landingImage{
+      margin-left: 0 !important;
+    }
+  }
+}
+@media only screen and (min-width:800px) and (max-width:1000px){
+  // main{
+  //   margin-top:600px;
+  // }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+ 
+  main{
+    // padding: 0 40%;
+    .landingImage{
+      width: 264px;
+      height: 232px;
+    }
+  };
+}
+
+@media (min-width: 1441px) {
+  /* Your 4K and wider screen styles go here */
 }
