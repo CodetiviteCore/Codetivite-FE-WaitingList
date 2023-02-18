@@ -11,7 +11,10 @@
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
-        background-color: var(--inputActive);
+        background-color: var(--inputActive) !important;
+    }
+    &:-webkit-autofill:focus-within {
+        background-color: var(--inputActive)  !important;
     }
     & input[data-autocompleted]{
         background-color: var(--inputActive) !important;
@@ -28,7 +31,7 @@
     }
 
     input {
-        width: inherit;
+        width: 100%;
         height: inherit;
         border: none;
         background-color: transparent;
@@ -56,10 +59,14 @@
 
 }
 
+.green{
+    background-color: var(--inputActive) !important;
+}
+
 
 @media only screen and (max-width:768px) {
     .input {
-        width: 90% !important;
+        width: 94% !important;
         height: 48px !important;
         border-radius: 0px 10px 10px !important;
     }

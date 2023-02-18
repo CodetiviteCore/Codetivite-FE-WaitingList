@@ -25,13 +25,15 @@ function App() {
   const [enabled, setEnabled] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [finish, setFinish] = useState(false)
   const [error, setError] = useState({
     Errorfullname: "",
     ErrorEmail: ""
   })
 
+
   const { fullName, email } = input
-  const { Errorfullname, ErrorEmail } = error
+  const { ErrorEmail } = error
 
   const validateInput = (email) => {
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -55,12 +57,23 @@ function App() {
     }
   }
 
-  
+  const handleBlur = () => {
+
+
+    setFinish(true)
+
+    if (fullName && email) {
+      setEnabled(true)
+    }
+    else if (fullName === "" || email === "") {
+      setEnabled(false)
+    }
+  }
+
   const submit = (e) => {
+    console.log("trjgg", fullName, email)
     e.preventDefault()
     setError({ ...error, ErrorEmail: " " })
-    alert("buterc")
-
 
     if ((email && validateInput(email))) {
       setLoading(true)
@@ -69,28 +82,30 @@ function App() {
         firstName: fullName
       })
         .then((response) => {
-          toast.success('Added to our mailing list', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-            progress: false,
-            theme: "light",
-          });
+          // toast.success('Added to our mailing list', {
+          //   position: "top-right",
+          //   autoClose: 3000,
+          //   hideProgressBar: true,
+          //   closeOnClick: true,
+          //   pauseOnHover: false,
+          //   draggable: false,
+          //   progress: false,
+          //   theme: "light",
+          // });
           setLoading(false)
         })
-        .catch((e) => toast.success(`Something went wrong ${e}`, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        }))
+        .catch((e) =>
+          toast.success(`Something went wrong ${e}`, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          }
+          ))
         .finally(() => {
           setInput({
             fullName: "",
@@ -109,13 +124,10 @@ function App() {
     <div className='main_container'>
       <Navbar />
       <Modal showModal={showModal} setShowModal={setShowModal} link={"codetivite.com"} />
-      <div className='container'>
-        <div className='lights'>
-        <img src={Yellow} alt={"Yellow Light"} className={"yellow"} />
-        <img src={Blue} alt={"Blue light"} className={"blue"} />
-        </div>
-       
 
+      <img src={Yellow} alt={"Yellow Light"} className={"yellow"} />
+      <img src={Blue} alt={"Blue light"} className={"blue"} />
+      <div className='container'>
         <main>
           <div className='deets'>
             <div className='cooking'><p>We're cooking 🔥</p></div>
@@ -131,9 +143,10 @@ function App() {
                     placeholder={"Firstname"}
                     icon={user}
                     onChange={handleInput}
-                    onBlur={handleInput}
+                    onBlur={handleBlur}
                     name={"fullName"}
                     value={fullName}
+                    finish={finish}
                     type="text"
                   />
 
@@ -143,16 +156,17 @@ function App() {
                     name={"email"}
                     value={email}
                     onChange={handleInput}
-                    onBlur={handleInput}
-                  // type="email"
+                    onBlur={handleBlur}
+                    finish={finish}
+                    type="email"
                   />
                   <p style={{ color: "red" }}>{ErrorEmail}</p>
                   <Button
                     buttonEnabled={enabled}
                     buttonType={"large"}
                     type="submit"
-                    disabled={enabled}
-                  onClick={submit}
+                    disabled={!enabled}
+                  // onClick={submit}
                   >{loading ?
 
                     <Puff
