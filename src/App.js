@@ -71,7 +71,6 @@ function App() {
   }
 
   const submit = (e) => {
-    console.log("trjgg", fullName, email)
     e.preventDefault()
     setError({ ...error, ErrorEmail: " " })
 
