@@ -105,11 +105,12 @@ function App() {
   }
 
   return (
-    <div className='parent_container'>
+    <>
+            <Modal showModal={showModal} setShowModal={setShowModal} link={"codetivite.com"} />
+           <div className='parent_container'>
       <Navbar />
-      <Modal showModal={showModal} setShowModal={setShowModal} link={"codetivite.com"} />
       <div className={"yellow"} />
-      {/* <div className={"blue"} /> */}
+      <div className={"blue"} />
       <main>
         <div>
           <div className='cooking'>
@@ -190,6 +191,8 @@ function App() {
       </footer>
     <ToastContainer /> 
     </div>
+    </>
+ 
 
   );
 }
