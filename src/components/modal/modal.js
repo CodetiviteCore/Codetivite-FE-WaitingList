@@ -48,7 +48,8 @@ export const Modal = ({ showModal, setShowModal, link }) => {
             {
                 showModal && (
                     <div className='modal'>
-                        <div className='modal-background' onClick={handleModalClick}
+                        <div
+                            className='modal-background' onClick={handleModalClick}
                         />
 
                         <div className='modal-content'>

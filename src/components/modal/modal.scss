@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 20;
+    z-index: 70 !important;
 
     .modal-background {
         position: absolute;
@@ -102,11 +102,15 @@
 
 @media only screen and (max-width:768px) {
     .modal {
-        .modal-background {}
+        .modal-background {
+            width: 100% !important;
+        
+        }
 
         .modal-content {
-            width: 388px;
-            height: 347px;
+            width: 388px !important;
+            height: 347px !important;
+            align-self: center;
 
             h3 {
                 font-size: 21px;
@@ -120,8 +124,8 @@
             }
 
             .added {
-                width: 103px;
-                height: 103px;
+                width: 103px !important;
+                height: 103px !important;
 
                 img {
                     width: 84px;

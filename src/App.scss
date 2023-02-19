@@ -1,6 +1,7 @@
 .parent_container {
   position: relative;
   height: 100%;
+  width: intial;
   .blue {
     position: absolute;
     width: 231px;
@@ -96,10 +97,8 @@
   .parent_container{
     height: max-content;
     .blue{
-      height: 50vh;
-      width: 100%;
       top: 0;
-      right: 0;
+      right: -12rem;
       opacity: 1;
     }
     // .yellow{
