@@ -69,40 +69,40 @@ function App() {
     e.preventDefault()
     setError({ ...error, ErrorEmail: " " })
 
-    // if ((email && validateInput(email))) {
-    //   setLoading(true)
-    //   axios.post("https://codetivite-api.onrender.com/v1.0/api/mailList", {
-    //     email: email,
-    //     firstName: fullName
-    //   })
-    //     .then((response) => {
-    //       setLoading(false)
-    //     })
-    //     .catch((e) =>
-    //       toast.success(`Something went wrong ${e}`, {
-    //         position: "top-right",
-    //         autoClose: 3000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: true,
-    //         progress: undefined,
-    //         theme: "light",
-    //       }
-    //       ))
-    //     .finally(() => {
-    //       setInput({
-    //         fullName: "",
-    //         email: ""
-    //       })
-    //       setEnabled(false)
-    //       handleShowModal()
-    //     })
-    // }
-    // else {
-    //   setError({ ...error, ErrorEmail: "Invalid email format" })
-    // }
-    handleShowModal()
+    if ((email && validateInput(email))) {
+      setLoading(true)
+      axios.post("https://codetivite-api.onrender.com/v1.0/api/mailList", {
+        email: email,
+        firstName: fullName
+      })
+        .then((response) => {
+          setLoading(false)
+        })
+        .catch((e) =>
+          toast.success(`Something went wrong ${e}`, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          }
+          ))
+        .finally(() => {
+          setInput({
+            fullName: "",
+            email: ""
+          })
+          setEnabled(false)
+          handleShowModal()
+        })
+    }
+    else {
+      setError({ ...error, ErrorEmail: "Invalid email format" })
+    }
+  
   }
 
   return (
@@ -145,7 +145,7 @@ function App() {
                   onChange={handleInput}
                   onBlur={handleBlur}
                   finish={finish}
-                  type="email"
+          
                 />
                 <p style={{ color: "red" }}>{ErrorEmail}</p>
                 <Button
