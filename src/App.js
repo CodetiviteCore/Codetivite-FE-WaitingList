@@ -7,8 +7,6 @@ import LandingImage from "./assets/img/landingImage.png"
 import Instagram from "./assets/instagram.svg"
 import Twitter from "./assets/twitter.svg"
 import LinkedIn from "./assets/linkedin.svg"
-import Yellow from "./assets/yellowLight.svg"
-import Blue from "./assets/blueLight.svg"
 import { Button } from './components/button/button';
 import { useState } from 'react';
 import { Modal } from './components/modal/modal';
@@ -58,10 +56,7 @@ function App() {
   }
 
   const handleBlur = () => {
-
-
     setFinish(true)
-
     if (fullName && email) {
       setEnabled(true)
     }
@@ -81,16 +76,6 @@ function App() {
         firstName: fullName
       })
         .then((response) => {
-          // toast.success('Added to our mailing list', {
-          //   position: "top-right",
-          //   autoClose: 3000,
-          //   hideProgressBar: true,
-          //   closeOnClick: true,
-          //   pauseOnHover: false,
-          //   draggable: false,
-          //   progress: false,
-          //   theme: "light",
-          // });
           setLoading(false)
         })
         .catch((e) =>
@@ -120,95 +105,90 @@ function App() {
   }
 
   return (
-    <div className='main_container'>
+    <div className='parent_container'>
       <Navbar />
       <Modal showModal={showModal} setShowModal={setShowModal} link={"codetivite.com"} />
+      <div className={"yellow"} />
+      <div className={"blue"} />
+      <main>
+        <div>
+          <div className='cooking'>
+            <p>We're cooking 🔥</p>
+          </div>
+          <h2>Join our waiting list!</h2>
+          <p>
+            Join the exciting journey of career advancement and professional growth.
+            Get access to real-life projects, collaborate with like-minded peers,
+            and connect with opportunities - Sign up for the Codetivite
+            community waitlist today!
+          </p>
+          <form onSubmit={submit}>
+            <div className='inputs'>
+              <Input
+                placeholder={"Firstname"}
+                icon={user}
+                onChange={handleInput}
+                onBlur={handleBlur}
+                name={"fullName"}
+                value={fullName}
+                finish={finish}
+                type="text"
+              />
 
-      <img src={Yellow} alt={"Yellow Light"} className={"yellow"} />
-      <img src={Blue} alt={"Blue light"} className={"blue"} />
-      <div className='container'>
-        <main>
-          <div className='deets'>
-            <div className='cooking'><p>We're cooking 🔥</p></div>
-            <div className='info'>
-              <h2>Join our waitlist</h2>
-              <p>Join the exciting journey of career advancement and professional growth.
-                Get access to real-life projects, collaborate with like-minded peers,
-                and connect with opportunities - Sign up for the Codetivite
-                community waitlist today!</p>
-              <form onSubmit={submit}>
-                <div className='inputs'>
-                  <Input
-                    placeholder={"Firstname"}
-                    icon={user}
-                    onChange={handleInput}
-                    onBlur={handleBlur}
-                    name={"fullName"}
-                    value={fullName}
-                    finish={finish}
-                    type="text"
-                  />
-
-                  <Input
-                    placeholder={"Email address"}
-                    icon={emailIcon}
-                    name={"email"}
-                    value={email}
-                    onChange={handleInput}
-                    onBlur={handleBlur}
-                    finish={finish}
-                    type="email"
-                  />
-                  <p style={{ color: "red" }}>{ErrorEmail}</p>
-                  <Button
-                    buttonEnabled={enabled}
-                    buttonType={"large"}
-                    type="submit"
-                    disabled={!enabled}
-                  // onClick={submit}
-                  >{loading ?
-
-                    <Puff
-                      height="40"
-                      width="40"
-                      radius={1}
-                      color="var(--greenlight)"
-                      ariaLabel="puff-loading"
-                      wrapperStyle={{}}
-                      wrapperClass=""
-                      visible={true}
-                    />
-                    : "Notify me on launch"}</Button>
-                </div>
-              </form>
-
+              <Input
+                placeholder={"Email address"}
+                icon={emailIcon}
+                name={"email"}
+                value={email}
+                onChange={handleInput}
+                onBlur={handleBlur}
+                finish={finish}
+                type="email"
+              />
+              <p style={{ color: "red" }}>{ErrorEmail}</p>
+              <Button
+                buttonEnabled={enabled}
+                buttonType={"large"}
+                type="submit"
+                disabled={!enabled}
+              // onClick={submit}
+              >{loading
+                ?
+                <Puff
+                  height="40"
+                  width="40"
+                  radius={1}
+                  color="var(--greenlight)"
+                  ariaLabel="puff-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+                : "Notify me on launch"}</Button>
             </div>
-          </div>
-          <div>
-            <img src={LandingImage} alt={"landing"} className="landingImage" />
-          </div>
-        </main>
-        <footer className='footer'>
-          <p> © 2023 Codevite All rights reserved.</p>
-          <div className='footer_socials'>
-            <a href='https://www.instagram.com/codetivite/' rel="noreferrer"><div><img src={Instagram} alt={"instagram"} /></div></a>
-            <a href='https://twitter.com/codetivite' target={"_blank"} rel="noreferrer">
-              <div>
-                <img src={Twitter} alt={"Twitter"} />
-              </div>
-            </a>
-            <a href='https://www.linkedin.com/company/codetivite/' target={"_blank"} rel="noreferrer">
-              <div>
-                <img src={LinkedIn} alt={"linkedIn"} />
-              </div>
-            </a>
-          </div>
-        </footer>
-
-
-      </div>
-      <ToastContainer />
-
+          </form>
+        </div>
+        <div className='image_container'>
+          <img src={LandingImage} alt={"landing"} className="landingImage" />
+        </div>
+      </main>
+      <footer>
+        <p> © 2023 Codevite All rights reserved.</p>
+        <div className='footer_socials'>
+          <a href='https://www.instagram.com/codetivite/' rel="noreferrer"><div><img src={Instagram} alt={"instagram"} /></div></a>
+          <a href='https://twitter.com/codetivite' target={"_blank"} rel="noreferrer">
+            <div>
+              <img src={Twitter} alt={"Twitter"} />
+            </div>
+          </a>
+          <a href='https://www.linkedin.com/company/codetivite/' target={"_blank"} rel="noreferrer">
+            <div>
+              <img src={LinkedIn} alt={"linkedIn"} />
+            </div>
+          </a>
+        </div>
+      </footer>
+    <ToastContainer /> 
     </div>
 
   );

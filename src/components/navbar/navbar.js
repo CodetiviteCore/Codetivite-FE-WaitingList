@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from './../button/button';
-import Logo from "../../assets/logo.svg"
+import Logo from "../../assets/img/circle.png"
 import "./navbar.scss"
 
 export const Navbar = () => {
@@ -13,7 +13,7 @@ export const Navbar = () => {
     return (
         <nav>
             <div>
-                <img src={Logo} alt="logo" className='logo' />
+                <h1>C<span><img src={Logo} alt="logo"/></span>detivite</h1>              
                 <Button onClick={handleMail}>Get in touch</Button>
             </div>
 

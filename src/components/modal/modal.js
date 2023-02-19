@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-export const Modal = ({showModal, setShowModal,link}) => {
+export const Modal = ({ showModal, setShowModal, link }) => {
     const handleCloseModal = () => {
         setShowModal(false)
     }
@@ -28,7 +28,7 @@ export const Modal = ({showModal, setShowModal,link}) => {
                 draggable: true,
                 progress: undefined,
                 theme: "light",
-                });
+            });
         }
         catch {
             toast.error('Could not copy!', {
@@ -40,7 +40,7 @@ export const Modal = ({showModal, setShowModal,link}) => {
                 draggable: true,
                 progress: undefined,
                 theme: "light",
-                });
+            });
         }
     }
     return (
@@ -48,27 +48,30 @@ export const Modal = ({showModal, setShowModal,link}) => {
             {
                 showModal && (
                     <div className='modal'>
-                    <div className='modal-background' onClick={handleModalClick}
-                    />
+                        <div className='modal-background' onClick={handleModalClick}
+                        />
+
                         <div className='modal-content'>
+                            <div className={"yellow"} />
+                            <div className={"blue"} />
                             <div className="added">
-                                <img src={Added } alt={"Added"} />
+                                <img src={Added} alt={"Added"} />
                             </div>
-                  
-                        <h3>We've added you to our waiting list!</h3>
+
+                            <h3>We've added you to our waiting list!</h3>
                             <p>We will notify you when we launch, tell a friend about us by copying the link below.</p>
-                            
-                            <div className='linkContainer' onClick={()=>copyToClipboard(link)}>
+
+                            <div className='linkContainer' onClick={() => copyToClipboard(link)}>
                                 <p>{`https://${link}`}</p>
                                 <img src={Copy} alt={"copy"} />
                             </div>
+                        </div>
+
                     </div>
-                      
-                </div>
                 )
-         
+
             }
-            <ToastContainer/> 
+            <ToastContainer />
         </>
 
     )

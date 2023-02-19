@@ -9,35 +9,34 @@ nav {
         margin: 0 auto;
         align-items: center;
         justify-content: space-between;
-        width: 100%;
-    
+        padding: 0 10%;
     }
 }
 
 
-//large laptop
-@media screen and  (min-width: 1025px) and (max-width: 1440px) {
-    nav{
-        div {
-            margin: 0 auto;
-        }
-    }
-}
-//normal
-@media screen and  (min-width: 768px) and (max-width: 1025px) {
-    nav{
-        div {
-            padding: 0 10%;
-        }
-    }
-}
-//mobile
-@media screen and (max-width:768px) {
-    nav{
-        width: 100%;
-        div{
-            width:100%;
-            padding: 0 10%;
-        }
-    }
-}
+// //large laptop
+// @media screen and  (min-width: 1025px) and (max-width: 1440px) {
+//     nav{
+//         div {
+//             margin: 0 auto;
+//         }
+//     }
+// }
+// //normal
+// @media screen and  (min-width: 768px) and (max-width: 1025px) {
+//     nav{
+//         div {
+//             padding: 0 10%;
+//         }
+//     }
+// }
+// //mobile
+// @media screen and (max-width:768px) {
+//     nav{
+//         width: 100%;
+//         div{
+//             width:100%;
+//             padding: 0 10%;
+//         }
+//     }
+// }
