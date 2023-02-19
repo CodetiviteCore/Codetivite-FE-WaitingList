@@ -109,7 +109,7 @@ function App() {
       <Navbar />
       <Modal showModal={showModal} setShowModal={setShowModal} link={"codetivite.com"} />
       <div className={"yellow"} />
-      <div className={"blue"} />
+      {/* <div className={"blue"} /> */}
       <main>
         <div>
           <div className='cooking'>

@@ -13,6 +13,14 @@ nav {
     }
 }
 
+@media screen and (max-width:760px) {
+    div{
+    
+        // gap: 10% !important;
+        width: initial !important;
+    }
+  
+  }
 
 // //large laptop
 // @media screen and  (min-width: 1025px) and (max-width: 1440px) {

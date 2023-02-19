@@ -1,6 +1,6 @@
 .parent_container {
   position: relative;
-
+  height: 100%;
   .blue {
     position: absolute;
     width: 231px;
@@ -33,7 +33,7 @@
   
     p{
       font-size: 1rem;
-      max-width: 35.5rem;
+      // max-width: 35.5rem;
       line-height: 1.5;
     }
     h2 {
@@ -94,12 +94,13 @@
 
 @media screen and (max-width:768px){
   .parent_container{
+    height: max-content;
     .blue{
       height: 50vh;
       width: 50%;
       top: 0;
       left: 8rem;
-      opacity: 0.8;
+      opacity: 1;
     }
     // .yellow{
     //   display: none;
@@ -118,21 +119,27 @@
         font-size: 12px;
       }
       .cooking{
-        width: 126px;
+        width: 40% !important;
         height: 26px;
         padding: 6px 24px;
         p{
             font-size: 10.5px;
         }
       }
+      form{
+        .inputs{
+          gap: 0.5rem !important;
+        }
+      }
 
       
     }
-    .image_container{
-      img{
-        width: 264.5px;
+    .landingImage{
+
+       width: 264.5px;
         height: 232.72px;
-      }
+       
+    
     }
 
     footer{
@@ -151,14 +158,14 @@
   .parent_container{
     width: max-content;
     .blue{
-      display: none;
+      
     }
-    .image_container{
-      img{
-        width: 354.5px;
-        height: 322.72px;
-      }
-    }
+    // .image_container{
+    //   img{
+    //     width: 354.5px;
+    //     height: 322.72px;
+    //   }
+    // }
   }
   
 }
@@ -166,7 +173,7 @@
   .parent_container{
     width: max-content;
     .blue{
-      display: none;
+      
     }
     .image_container{
       img{
