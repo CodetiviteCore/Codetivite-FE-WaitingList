@@ -1,50 +1,25 @@
-nav {
+nav{
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
     background-color: transparent;
     z-index: 10;
-
-    div {
-        height: 10vh;
-        display: flex;
-        max-width: 1200px;
-        margin: 0 auto;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 10%;
-    }
+    width: auto;
 }
 
-@media screen and (max-width:760px) {
-    div{
-    
-        // gap: 10% !important;
-        width: initial !important;
+
+
+@media screen and (max-width:700px) {
+    nav{
+        justify-content: space-between;
+        // .logo{
+        //     width: 30%;
+        //     height: 60px;
+        // }
+      
     }
   
   }
 
-// //large laptop
-// @media screen and  (min-width: 1025px) and (max-width: 1440px) {
-//     nav{
-//         div {
-//             margin: 0 auto;
-//         }
-//     }
-// }
-// //normal
-// @media screen and  (min-width: 768px) and (max-width: 1025px) {
-//     nav{
-//         div {
-//             padding: 0 10%;
-//         }
-//     }
-// }
-// //mobile
-// @media screen and (max-width:768px) {
-//     nav{
-//         width: 100%;
-//         div{
-//             width:100%;
-//             padding: 0 10%;
-//         }
-//     }
-// }

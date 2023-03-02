@@ -12,12 +12,11 @@ export const Navbar = () => {
     }
     return (
         <nav>
-            <div>
-                <h1>C<span><img src={Logo} alt="logo"/></span>detivite</h1>              
-                <Button onClick={handleMail}>Get in touch</Button>
-            </div>
+
+            <h1>c<span><img src={Logo} alt="logo" /></span>detivite</h1>
+            <Button onClick={handleMail}>Get in touch</Button>
 
         </nav>
     )
-    
+
 }

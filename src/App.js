@@ -7,6 +7,8 @@ import LandingImage from "./assets/img/landingImage.png"
 import Instagram from "./assets/instagram.svg"
 import Twitter from "./assets/twitter.svg"
 import LinkedIn from "./assets/linkedin.svg"
+import Yellow from "./assets/yellowLight.svg"
+import Blue from "./assets/blueLight.svg"
 import { Button } from './components/button/button';
 import { useState } from 'react';
 import { Modal } from './components/modal/modal';
@@ -102,79 +104,78 @@ function App() {
     else {
       setError({ ...error, ErrorEmail: "Invalid email format" })
     }
-  
+
   }
 
   return (
-    <>
+    <div className='main_container'>
+      <Navbar />
       <Modal showModal={showModal} setShowModal={setShowModal} link={"codetivite.com"} />
-      <div className='parent_container'>
-        <Navbar />
-        <div className={"yellow"} />
-        {/* <div className={"blue"} /> */}
-        <main>
-          <div>
-            <div className='cooking'>
-              <p>We're cooking 🔥</p>
-            </div>
-            <h2>Join our waiting list!</h2>
-            <p>
-              Join the exciting journey of career advancement and professional growth.
-              Get access to real-life projects, collaborate with like-minded peers,
-              and connect with opportunities - Sign up for the Codetivite
-              community waitlist today!
-            </p>
-            <form onSubmit={submit}>
-              <div className='inputs'>
-                <Input
-                  placeholder={"Firstname"}
-                  icon={user}
-                  onChange={handleInput}
-                  onBlur={handleBlur}
-                  name={"fullName"}
-                  value={fullName}
-                  finish={finish}
-                  type="text"
-                />
+      <div className='container'>
+        <img src={Yellow} alt={"Yellow Light"} className={"yellow"} />
+        <img src={Blue} alt={"Blue light"} className={"blue"} />
 
-                <Input
-                  placeholder={"Email address"}
-                  icon={emailIcon}
-                  name={"email"}
-                  value={email}
-                  onChange={handleInput}
-                  onBlur={handleBlur}
-                  finish={finish}
-          
-                />
-                <p style={{ color: "red" }}>{ErrorEmail}</p>
-                <Button
-                  buttonEnabled={enabled}
-                  buttonType={"large"}
-                  type="submit"
-                  // disabled={!enabled}
-                // onClick={submit}
-                >{loading
-                  ?
-                  <Puff
-                    height="40"
-                    width="40"
-                    radius={1}
-                    color="var(--greenlight)"
-                    ariaLabel="puff-loading"
-                    wrapperStyle={{}}
-                    wrapperClass=""
-                    visible={true}
+        <main>
+          <div className='deets'>
+            <div className='cooking'><p>We're cooking 🔥</p></div>
+            <div className='info'>
+              <h2>Join our waitlist</h2>
+              <p>Join the exciting journey of career advancement and professional growth.
+                Get access to real-life projects, collaborate with like-minded peers,
+                and connect with opportunities - Sign up for the Codetivite
+                community waitlist today!</p>
+              <form onSubmit={submit}>
+                <div className='inputs'>
+                  <Input
+                    placeholder={"Firstname"}
+                    icon={user}
+                    onChange={handleInput}
+                    onBlur={handleBlur}
+                    name={"fullName"}
+                    value={fullName}
+                    finish={finish}
+                    type="text"
                   />
-                  : "Notify me on launch"}</Button>
-              </div>
-            </form>
+
+                  <Input
+                    placeholder={"Email address"}
+                    icon={emailIcon}
+                    name={"email"}
+                    value={email}
+                    onChange={handleInput}
+                    onBlur={handleBlur}
+                    finish={finish}
+
+                  />
+                  <p style={{ color: "red" }}>{ErrorEmail}</p>
+                  <Button
+                    buttonEnabled={enabled}
+                    buttonType={"large"}
+                    type="submit"
+                  // disabled={!enabled}
+                  // onClick={submit}
+                  >{loading
+                    ?
+                    <Puff
+                      height="40"
+                      width="40"
+                      radius={1}
+                      color="var(--greenlight)"
+                      ariaLabel="puff-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                    />
+                    : "Notify me on launch"}</Button>
+                </div>
+              </form>
+            </div>
           </div>
-          <div className='image_container'>
+          <div>
             <img src={LandingImage} alt={"landing"} className="landingImage" />
           </div>
         </main>
-        <footer>
+        <footer className='footer'>
           <p> © 2023 Codevite All rights reserved.</p>
           <div className='footer_socials'>
             <a href='https://www.instagram.com/codetivite/' rel="noreferrer"><div><img src={Instagram} alt={"instagram"} /></div></a>
@@ -190,12 +191,22 @@ function App() {
             </a>
           </div>
         </footer>
-        <ToastContainer />
+
+
       </div>
-    </>
+      <ToastContainer />
+
+    </div>
+
 
 
   );
 }
 
 export default App;
+
+
+
+
+
+

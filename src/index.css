@@ -8,8 +8,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 0 auto;
-  /* overflow-x: hidden; */
+  overflow-x: hidden !important;
+  width: 100%;
+;
+  
 }
 *{
   margin:0;
@@ -32,17 +34,10 @@ code {
 p,h1,h2,h3,h4,h5,h6,ul,li,button,input{
   font-family: 'Red Hat Display', sans-serif;
 }
-input:autofill{
-  border: 3px solid red;
+
+@media screen and (min-width:2000px) {
+  body{
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
-input:-webkit-autofill {
-  border: 3px solid red;
-}
-@media (min-width: 1025px) and (max-width: 1440px) {
-  /* body{
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } */
-  };
