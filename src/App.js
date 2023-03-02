@@ -78,9 +78,21 @@ function App() {
         firstName: fullName
       })
         .then((response) => {
+          handleShowModal()
+          // toast.success(`The response`, {
+          //   position: "top-right",
+          //   autoClose: 3000,
+          //   hideProgressBar: false,
+          //   closeOnClick: true,
+          //   pauseOnHover: true,
+          //   draggable: true,
+          //   progress: undefined,
+          //   theme: "light",
+          // }
+          // )
           setLoading(false)
         })
-        .catch((e) =>
+        .catch((e) => {
           toast.error(`Something went wrong`, {
             position: "top-right",
             autoClose: 3000,
@@ -91,14 +103,17 @@ function App() {
             progress: undefined,
             theme: "light",
           }
-          ))
+          )
+          setLoading(false)
+        }
+  
+      )
         .finally(() => {
           setInput({
             fullName: "",
             email: ""
           })
           setEnabled(false)
-          handleShowModal()
         })
     }
     else {
@@ -152,8 +167,8 @@ function App() {
                     buttonEnabled={enabled}
                     buttonType={"large"}
                     type="submit"
-                  // disabled={!enabled}
-                  // onClick={submit}
+                    disabled={!enabled}
+                    onClick={submit}
                   >{loading
                     ?
                     <Puff
