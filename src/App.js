@@ -81,7 +81,7 @@ function App() {
           setLoading(false)
         })
         .catch((e) =>
-          toast.success(`Something went wrong ${e}`, {
+          toast.success(`Something went wrong`, {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,
