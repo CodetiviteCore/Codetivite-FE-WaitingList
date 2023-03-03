@@ -73,7 +73,7 @@ function App() {
 
     if ((email && validateInput(email))) {
       setLoading(true)
-      axios.post("https://codetivite-api.onrender.com/v1.0/api/mailList", {
+      axios.post("https://codetivite-api.onrender.com/api/v1.0/users/add-to-mail-list", {
         email: email,
         firstName: fullName
       })
